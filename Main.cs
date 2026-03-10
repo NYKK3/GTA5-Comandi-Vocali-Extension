@@ -138,19 +138,19 @@ namespace GTA5ComandiVocaliExtension
         {
 
             Game.LogTrivial("GTA5ComandiVocaliExtension: Usato il comando " + data);
-            if (data == "in_servizio") { SafeCall(() => GrammarPolice.API.Functions.Available(false, true)); }
-            if (data == "fuori_servizio") { SafeCall(() => GrammarPolice.API.Functions.Busy(false, true)); }
+            if (data == "in_servizio") { SafeCall(() => GrammarPolice.API.Functions.Available(true, true)); }
+            if (data == "fuori_servizio") { SafeCall(() => GrammarPolice.API.Functions.Busy(true, true)); }
             if (data == "accetta_chiamata") { SafeCall(() => Callout.Accept()); }
 
             // Poco per volta cambiare i nomi dei comandi
-            if (data == "in_pattuglia") { SafeCall(() => GrammarPolice.API.Functions.StartPatrol(false, true)); }
-            if (data == "investigando") { SafeCall(() => GrammarPolice.API.Functions.Investigating(false, true)); }
-            if (data == "sulla_scena") { SafeCall(() => GrammarPolice.API.Functions.Scene(false, true)); }
-            if (data == "torno_in_centrale") { SafeCall(() => GrammarPolice.API.Functions.ReturnToStation(false, true)); }
+            if (data == "in_pattuglia") { SafeCall(() => GrammarPolice.API.Functions.StartPatrol(true, true)); }
+            if (data == "investigando") { SafeCall(() => GrammarPolice.API.Functions.Investigating(true, true)); }
+            if (data == "sulla_scena") { SafeCall(() => GrammarPolice.API.Functions.Scene(true, true)); }
+            if (data == "torno_in_centrale") { SafeCall(() => GrammarPolice.API.Functions.ReturnToStation(true, true)); }
             if (data == "in_pericolo") { SafeCall(() => GrammarPolice.API.Functions.Panic()); }
             if (data == "agente_a_terra") { SafeCall(() => Backup.OfficerDown()); }
 
-            if (data == "fermato_un_veicolo") { SafeCall(() => GrammarPolice.API.Functions.TrafficStop(false, true)); }
+            if (data == "fermato_un_veicolo") { SafeCall(() => GrammarPolice.API.Functions.TrafficStop(true, true)); }
             if (data == "fermato_un_veicolo_backup") { SafeCall(() => UltimateBackup.API.Functions.callTrafficStopBackup()); }
             if (data == "codice2") { SafeCall(() => Backup.Code2()); }
             if (data == "codice3") { SafeCall(() => Backup.Code3()); }
@@ -200,11 +200,21 @@ namespace GTA5ComandiVocaliExtension
         {
             try
             {
-                action();
+                GameFiber.StartNew(() =>
+                {
+                    try
+                    {
+                        action();
+                    }
+                    catch (Exception ex)
+                    {
+                        Game.LogTrivial($"GTA5ComandiVocaliExtension: Errore nell'esecuzione del comando - {ex.Message}");
+                    }
+                });
             }
             catch (Exception ex)
             {
-                Game.LogTrivial($"GTA5ComandiVocaliExtension: Errore nell'esecuzione del comando - {ex.Message}");
+                Game.LogTrivial($"GTA5ComandiVocaliExtension: Errore nell'avvio del comando - {ex.Message}");
             }
         }
     }
