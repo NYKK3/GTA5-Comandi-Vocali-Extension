@@ -23,7 +23,7 @@ namespace GTA5ComandiVocaliExtension
 
         private static void LoadConfig()
         {
-            string configPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "GTA5ComandiVocaliExtension_config.txt");
+            string configPath = "plugins/LSPDFR/GTA5ComandiVocaliExtension_config.txt";
             
             try
             {
