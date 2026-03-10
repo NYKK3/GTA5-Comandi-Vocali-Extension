@@ -1,0 +1,87 @@
+# Build output directories
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sln.user
+*.sln.user.*
+*.sln.user.osx
+*.sln.user.windows
+*.sln.user.linux
+
+# Generated files
+*.dll
+*.pdb
+*.exe
+*.ico
+*.icns
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.mp3
+*.wav
+*.ogg
+*.flac
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.mkv
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+*.tgz
+*.iso
+*.img
+*.bin
+*.msi
+*.msix
+*.msixbundle
+*.appx
+*.appxbundle
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+**/packages/
+
+# Temporary files
+*.tmp
+*.temp
+*.cache
+*.log
+
+# User-specific files
+*.userprefs
+*.userprefs.*
+
+# Windows files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE settings
+.settings/
+.project
+.idea/
+*.iml
+
+# Debug symbols
+*.sym
+
+# Assembly info
+Properties/AssemblyInfo.cs
+
+# References folder (DLL di riferimento) - ignora solo le DLL, non i file .md
+references/*.dll
+references/*.pdb

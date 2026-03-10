@@ -1,0 +1,4 @@
+# File di configurazione per GTA5ComandiVocaliExtension
+# Modifica la porta del server listener qui sotto
+
+ListenPort=51250
