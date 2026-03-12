@@ -139,9 +139,11 @@ namespace GTA5ComandiVocaliExtension
 
             Game.LogTrivial("GTA5ComandiVocaliExtension: Usato il comando " + data);
             if (data == "in_servizio") { SafeCall(() => GrammarPolice.API.Functions.Available(true, true)); }
+            if (data == "occupato") { SafeCall(() => Status.OutOfService()); }
             if (data == "fuori_servizio") { SafeCall(() => GrammarPolice.API.Functions.Busy(true, true)); }
             if (data == "accetta_chiamata") { SafeCall(() => Callout.Accept()); }
             if (data == "in_pattuglia") { SafeCall(() => GrammarPolice.API.Functions.StartPatrol(true, true)); }
+            if (data == "di_pattuglia") { SafeCall(() => Status.OnPatrol()); }
             if (data == "investigando") { SafeCall(() => GrammarPolice.API.Functions.Investigating(true, true)); }
             if (data == "sulla_scena") { SafeCall(() => GrammarPolice.API.Functions.Scene(true, true)); }
             if (data == "torno_in_centrale") { SafeCall(() => GrammarPolice.API.Functions.ReturnToStation(true, true)); }
@@ -163,7 +165,8 @@ namespace GTA5ComandiVocaliExtension
             if (data == "invia_vigili_del_fuoco") { SafeCall(() => Backup.Fire()); }
             if (data == "controllo_documenti_persona") { SafeCall(() => StopThePed.API.Functions.requestDispatchPedCheck(true)); }
             if (data == "controllo_targa_veicolo") { SafeCall(() => StopThePed.API.Functions.requestDispatchVehiclePlateCheck(true)); }
-            if (data == "inseguimento") { SafeCall(() => Callout.InitiatePursuit()); }
+            if (data == "inizio_inseguimento") { SafeCall(() => Callout.InitiatePursuit()); }
+            if (data == "in_inseguimento") { SafeCall(() => Status.InPursuit()); }
             if (data == "sospetto_scappato") { SafeCall(() => Advisory.SuspectLost()); }
             if (data == "sospetto_catturato") { SafeCall(() => Advisory.SuspectCustody()); }
             if (data == "blocco_stradale") { SafeCall(() => Backup.Roadblock()); }
